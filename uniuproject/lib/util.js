@@ -10,7 +10,11 @@ var util = {
 
     hashBlockContent : function(message) {
         return crypto.SHA256(message);
-    }
+    },
+
+    generateAmmount : function() {
+        return Math.floor(Math.random() * 100);
+    } 
 };
 
 
