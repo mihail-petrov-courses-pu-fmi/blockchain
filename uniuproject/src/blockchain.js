@@ -24,22 +24,63 @@ Blockchain.prototype.addBlock = function(block) {
     this.blockCollection.push(block);
 };
 
-
 Blockchain.prototype.mainNewBlock = function(transactionObject) {
     
     var newBlock      = new Block(transactionObject);
-    var lastBlockchainBlock = this.getLastBlock();
+    console.log("Mine id : " + newBlock.getId());
 
-    // gte the hash from last block
-    var lastBlockchainHash  = lastBlockchainBlock.getHash();
-    newBlock.setPrevBlockReference(lastBlockchainHash);
-    
+    // if transaction length 5 -> 2
+    // if transaction length 10 -> 3
+    // if transaction length 10 -> 3 
+    var transactionComplexity = this.getTransactionComplexity();
 
-    // create new block
-    // atacje new block to block chain
-    // mine new block 
+    if(newBlock.mineBlock(transactionComplexity)) {
+        
+        var lastBlockchainBlock = this.getLastBlock();
+
+        // gte the hash from last block
+        var lastBlockchainHash  = lastBlockchainBlock.getHash();
+        newBlock.setPrevBlockReference(lastBlockchainHash);
+        
+        // add to blockchain network
+        this.addBlock(newBlock);
+    }
+
+    console.log("Transaction id: " + newBlock.getHash());
+    console.log("**")
+    console.log("**")
+    console.log("Number of success transactions " + this.blockCollection.length);
 };
 
+Blockchain.prototype.isBlockchainValid = function() {
+    // TODO: development
+};
+
+
+Blockchain.prototype.getTransactionComplexity = function() {
+    
+    if(this.blockCollection.length > 25 ) {
+        return 6;
+    }
+
+    if(this.blockCollection.length > 20 ) {
+        return 5;
+    }
+
+    if(this.blockCollection.length > 15 ) {
+        return 4;
+    }
+
+    if(this.blockCollection.length > 10 ) {
+        return 3;
+    }
+
+    if(this.blockCollection.length > 5 ) {
+        return 2;
+    }
+
+    return 1;
+};
 
 Blockchain.prototype.getInfo = function() {
     return "Blockchain : " + this.title + " created on " + this.initDate;

@@ -4,12 +4,12 @@ var util = {
 
     generateBlockId : function() {
 
-        var getTime = (new Date()).getTime();   // string in miliseconds
-        return crypto.SHA256(getTime);          // hash 
+        var getTime = 'a' + (new Date()).getTime();   // string in miliseconds
+        return crypto.SHA256(getTime).toString();          // hash 
     },
 
     hashBlockContent : function(message) {
-        return crypto.SHA256(message);
+        return crypto.SHA256(message).toString();
     },
 
     generateAmmount : function() {

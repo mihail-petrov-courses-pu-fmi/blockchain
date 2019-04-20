@@ -57,4 +57,33 @@
 // console.log((new Date()).getTime());
 
 
-console.log(Math.floor(Math.random() * 100));
+//console.log(Math.floor(Math.random() * 100));
+
+
+// var util = require('./lib/util');
+// var _id        = util.generateBlockId();
+// var from       = 'sdasdkjsjasvdjasgf';
+// var to         = 'asdjhasvdjgasdjsad';
+// var amount     = 11;
+// var hash       = (util.hashBlockContent(`${_id} ${from} ${to} ${amount}`));
+// var blockGenerationIterator = 0;
+
+// // 0000x7845764
+// console.log("HASH")
+// console.log(hash.toString())
+
+// var hashSubstr = hash.substring(0, 4);
+// console.log(hashSubstr);
+
+
+// while(hash.substring(0, 5) != '00000') {
+
+//     hash = (util.hashBlockContent(`${_id} ${from} ${to} ${amount} ${blockGenerationIterator}`));
+//     console.log(hash);
+//     blockGenerationIterator++;
+// }
+
+
+var collection = new Array(9);
+console.log(collection.join('0'));
+
